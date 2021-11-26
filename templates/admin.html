@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Админка{% endblock %}
+{% block main %}
+<h1 class="title">Панель администратора БД</h1>
+<div class="db-table">
+    {% include 'db-table__header.html' %}
+    {% include 'db-table__content.html' %}
+</div>
+{% endblock %}

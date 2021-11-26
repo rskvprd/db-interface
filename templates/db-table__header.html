@@ -1,0 +1,9 @@
+<div class="db-table__tables">
+    <h3 class="db-table__tables-title">Таблицы</h3>
+    <section class="db-table__tables-list">
+    {% for table in tables %}
+        <button class="db-table__tables-item button">{{ table[0] }}</button>
+    {% endfor %}
+    </section>
+    <button class="db-table__add-button button" id="addButton">ADD TABLE</button>
+</div>

@@ -1,0 +1,32 @@
+{% block head_end %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}">
+{% endblock %}
+
+<div class="db-table__columns">
+    <table id="table">
+    {% if data.error %}
+    <tr>
+        <td>Произошла ошибка: {{ data.error }}</td>
+    </tr>
+    {% else %}
+        <tr class="db-table__columns-title">
+            {% for column in data.description %}
+                <th class="db-table__columns-title-item">{{ column[0] }}: {{ column[1] }} ({{ column[3] }})</th>
+            {% endfor %}
+        </tr>
+        {% if data.rows %}
+            {% for row in data.rows %}
+                <tr class="db-table__columns-row">
+                {% for value in row %}
+                    <td class="db-table__columns-row-item">{{ value }}</td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+
+        {% else %}
+            <tr class="db-table__columns-row-item"><td colspan="255">Таблица '{{ data.name }}' не содержит значений</td></tr>
+        {% endif %}
+    {% endif %}
+
+    </table>
+</div>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Test{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head_end %}{% endblock %}
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__body">
+            <img class="header__profile" src="{{ url_for('static', filename='profile.png') }}" width="40" alt="profile">
+            <nav class="header__navbar">
+                <ul class="header__list">
+                    <li><a class="header__link" href="{{ url_for('index') }}" id="/">Главная</a></li>
+                    <li><a class="header__link" href="{{ url_for('about') }}" id="/about">О нас</a></li>
+                    <li><a class="header__link" href="{{ url_for('admin') }}" id="/admin">Админская панель</a></li>
+                </ul>
+            </nav>
+            <div class="header__burger">
+                <span></span>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+<div class="container">
+{% set msg = get_flashed_messages() %}
+{% if msg %}
+<div class="flash">{{ msg[0] }}</div>
+{% endif %}
+{% block main %}{% endblock %}
+</div>
+</main>
+<footer class="footer">
+    <div class="container"></div>
+</footer>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+<script src="{{ url_for('static', filename='js/adaptive.js') }}"></script>
+</body>
+</html>
